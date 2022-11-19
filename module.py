@@ -29,7 +29,7 @@ def encrypt(directory):
             except:
                 pass
 
-def decrypt_dir(directory):
+def decrypt(directory):
     for filename in os.listdir(directory):
         file = filename
         str_fn = str(filename)
