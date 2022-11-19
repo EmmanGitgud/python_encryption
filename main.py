@@ -1,13 +1,31 @@
 import os
 import tkinter as tk
+import subprocess
+from module import *
 from tkinter import filedialog
 from tkinter import *
 from tkinter import messagebox
+
 
 root = Tk()
 root.title('Ncrypt')
 root.resizable(False,False)
 
+def file_dir_click():
+    file_dir.delete(0,END)
+    filepath = filedialog.askdirectory()
+    file_dir.insert(0, filepath+'/')
+    
+def key_dir_click():
+    key_dir.delete(0,END)
+    filepath = filedialog.askdirectory()
+    key_dir.insert(0, filepath+'/')
+
+def encrypt_click():
+    encrypt()
+
+def decrypt_click():
+    decrypt()
 
 #font
 current_font = ("Arial Bold", 15)
@@ -19,8 +37,8 @@ file_loc = tk.Variable()
 file_dir = Entry(root,width=70,textvariable=file_loc)
 key_dir = Entry(root,width=70,textvariable=key_loc)
 
-browse_file_button = Button(root,font=current_font, text='Browse directory',)
-browse_key_button = Button(root,font=current_font, text='Browse key',)
+browse_file_button = Button(root,font=current_font, text='Browse directory',command=file_dir_click)
+browse_key_button = Button(root,font=current_font, text='Browse key',command=key_dir_click)
 
 main_label = Label(root,font=current_font, text='******************* Welcome To Ncrypt *******************\n\n- Browse for your key\n\n- Browse for the directory\n\n- Then encrypt / decrypt\n')
 
@@ -49,4 +67,4 @@ root.rowconfigure(0, weight=1)
 root.rowconfigure(1, weight=1)
 root.rowconfigure(2, weight=3)
 
-root,mainloop()
+root.mainloop()
