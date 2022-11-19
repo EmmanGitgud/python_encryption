@@ -30,7 +30,6 @@ def encrypt(directory):
                 pass
 
 def decrypt_dir(directory):
-
     for filename in os.listdir(directory):
         file = filename
         str_fn = str(filename)
@@ -45,10 +44,8 @@ def decrypt_dir(directory):
                 with open(directory + file, 'rb') as f:
                     file = f.read()
 
-                #decrypts the file
                 token = key.decrypt(file)
 
-                #write the file
                 with open(directory + filename,'wb') as f:
                     f.write(token)
                 os.rename(directory + str_fn, directory + new_name)
