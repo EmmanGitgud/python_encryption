@@ -20,14 +20,20 @@ def key_dir_click():
     filepath = filedialog.askopenfilename(title='select key', filetypes=[("key",".key")])
     key_dir.insert(0, filepath)
     initialize(filepath)
-
+    
 def encrypt_click():
-    filepath = file_dir.get()
-    encrypt(filepath)
+    root.after(1000,run_encrypt)
+    root.bell()
 
 def decrypt_click():
-    filepath = file_dir.get()
-    decrypt(filepath)
+    root.after(1000,run_decrypt)
+    root.bell()
+
+def run_encrypt():
+    encrypt(file_dir.get())
+
+def run_decrypt():
+    decrypt(file_dir.get())
 
 #font
 current_font = ("Arial Bold", 15)
