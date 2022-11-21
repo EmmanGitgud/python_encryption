@@ -6,26 +6,28 @@ from tkinter import filedialog
 from tkinter import *
 from tkinter import messagebox
 
-
 root = Tk()
 root.title('Ncrypt')
 root.resizable(False,False)
 
 def file_dir_click():
     file_dir.delete(0,END)
-    filepath = filedialog.askdirectory()
+    filepath = filedialog.askdirectory(title='select directory' ,initialdir="G:\My Drive")
     file_dir.insert(0, filepath+'/')
     
 def key_dir_click():
     key_dir.delete(0,END)
-    filepath = filedialog.askdirectory()
-    key_dir.insert(0, filepath+'/')
+    filepath = filedialog.askopenfilename(title='select key', filetypes=[("key",".key")])
+    key_dir.insert(0, filepath)
+    initialize(filepath)
 
 def encrypt_click():
-    encrypt()
+    filepath = file_dir.get()
+    encrypt(filepath)
 
 def decrypt_click():
-    decrypt()
+    filepath = file_dir.get()
+    decrypt(filepath)
 
 #font
 current_font = ("Arial Bold", 15)
@@ -42,8 +44,8 @@ browse_key_button = Button(root,font=current_font, text='Browse key',command=key
 
 main_label = Label(root,font=current_font, text='******************* Welcome To Ncrypt *******************\n\n- Browse for your key\n\n- Browse for the directory\n\n- Then encrypt / decrypt\n')
 
-encrypt_button = Button(root,font=current_font, text='Encrypt Directory',height=2, width=4,)
-decrypt_button = Button(root,font=current_font, text='Decrypt Directory',height=2, width=4,)
+encrypt_button = Button(root,font=current_font, text='Encrypt Directory',height=2, width=4,command=encrypt_click)
+decrypt_button = Button(root,font=current_font, text='Decrypt Directory',height=2, width=4,command=decrypt_click)
 
 # grid
 file_dir.grid(column=0, row=0, columnspan=2, sticky=(W), padx=10,pady=10)
