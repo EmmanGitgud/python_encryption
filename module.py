@@ -1,4 +1,5 @@
 import os
+import time
 from cryptography.fernet import Fernet
 
 def initialize(key_dir):
@@ -21,15 +22,15 @@ def encrypt(directory):
                 with open(directory + file, 'rb') as f:
                     file = f.read()
                     
-                    token = key.encrypt(file)
+                token = key.encrypt(file)
 
-                    with open(directory+filename,'wb') as f:
-                        f.write(token)
-                    os.rename(directory+str_fn, directory+new_name)
+                with open(directory+filename,'wb') as f:
+                    f.write(token)
+                os.rename(directory+str_fn, directory+new_name)
             except:
                 pass
 
-def decrypt_dir(directory):
+def decrypt(directory):
     for filename in os.listdir(directory):
         file = filename
         str_fn = str(filename)
