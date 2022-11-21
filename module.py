@@ -1,4 +1,5 @@
 import os
+import time
 from cryptography.fernet import Fernet
 
 def initialize(key_dir):
