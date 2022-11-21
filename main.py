@@ -1,6 +1,4 @@
-import os
 import tkinter as tk
-import subprocess
 from module import *
 from tkinter import filedialog
 from tkinter import *
