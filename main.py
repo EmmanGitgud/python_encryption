@@ -2,7 +2,6 @@ import tkinter as tk
 from module import *
 from tkinter import filedialog
 from tkinter import *
-from tkinter import messagebox
 
 root = Tk()
 root.title('Ncrypt')
@@ -20,18 +19,12 @@ def key_dir_click():
     initialize(filepath)
     
 def encrypt_click():
-    root.after(1000,run_encrypt)
+    root.after(1000,encrypt(file_dir.get()))
     root.bell()
 
 def decrypt_click():
-    root.after(1000,run_decrypt)
+    root.after(1000, decrypt(file_dir.get()))
     root.bell()
-
-def run_encrypt():
-    encrypt(file_dir.get())
-
-def run_decrypt():
-    decrypt(file_dir.get())
 
 #font
 current_font = ("Arial Bold", 15)
